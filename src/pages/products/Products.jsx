@@ -3,27 +3,35 @@ import { Link } from 'react-router-dom';
 
 import { connect } from 'react-redux'
 import { fetchProductsStartAsync } from '../../redux/shop/shop.actions';
+import { createStructuredSelector } from 'reselect';
+import { selectProducts, selectIsProductLoaded } from '../../redux/shop/shop.selectors'
 
 import { AppRoute } from '../../routing/AppRoute.enum';
+
+import Spinner from '../../components/spinner/spinner.component';
+import ProductCard from '../../components/product-card/product-card.component';
+
+import {
+  ProductPageContainer
+} from './product.styles';
 
 class Products extends React.Component {
 
   componentDidMount(){
-    console.log(this);
-    const { fetchProductsStartAsync } = this.props;
+    const { fetchProductsStartAsync, isLoaded } = this.props;
     fetchProductsStartAsync()
   }
-  // useEffect(() => {
-  //   console.log()
-    
-  // }, [])
 
   render(){
+    const { isLoaded, products } = this.props;
     return (
-      <>
-      <h2>Products page</h2>
-        <Link to={AppRoute.login}> Login </Link>
-      </>
+      <ProductPageContainer>
+      {
+        isLoaded ? products.items.map(product => 
+          <ProductCard key={product.id} product={product} />) 
+        : <Spinner />
+      }
+      </ProductPageContainer>
     );
   }
 };
@@ -32,4 +40,9 @@ const mapDispatchToProps = dispatch => ({
   fetchProductsStartAsync: () => dispatch(fetchProductsStartAsync())
 });
 
-export default connect(null, mapDispatchToProps)(Products);
+const mapStateToProps = createStructuredSelector({
+  products: selectProducts,
+  isLoaded: selectIsProductLoaded
+})
+
+export default connect(mapStateToProps, mapDispatchToProps)(Products);

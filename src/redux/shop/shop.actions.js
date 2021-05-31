@@ -18,7 +18,7 @@ export const fetchProductsStartAsync = () => {
   return dispatch => {
     dispatch(fetchProductsStart());
 
-    fetch('https://join-tsh-api-staging.herokuapp.com/products')
+    fetch('https://join-tsh-api-staging.herokuapp.com/products?limit=10&page=1')
     .then(response => response.json())
     .then(data => {
       dispatch(fetchProductsSuccess(data));
