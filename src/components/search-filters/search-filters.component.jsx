@@ -10,7 +10,8 @@ import FormInput from '../form-input/form-input.component';
 import { ReactComponent as Magnifier } from '../assets/magnifier.svg';
 
 import{
-    SearchFiltersContainer
+    SearchFiltersContainer,
+    OptionsContainer
 } from './search-filters.styles';
 
 const SearchFilters = ({products, setProductsPager, isFetching}) => {
@@ -26,24 +27,31 @@ const SearchFilters = ({products, setProductsPager, isFetching}) => {
         setAllProducts(products);
     }, [isFetching])
 
-
-
-    //MORE WORK REQUIRED!
     const handleChange = event =>{
         const { name, value, checked } = event.target;
-        console.log(products.length)
-        
         if(event.target.type == 'checkbox'){
+            
             setFilterCrudentials({...filterCrudentials, [name]: checked });
             if(name === 'active'){
-                console.log(products.filter(product => product.active === checked))
-                setProductsPager(products.filter(product => product.active === checked));
-                if(checked === false){
+                if(checked === true && filterCrudentials.promo === false){
+                    setProductsPager(allProducts.filter(product => product.active === checked && product.promo === false));
+                } else if(checked === true && filterCrudentials.promo === true){
+                    setProductsPager(allProducts.filter(product => product.active === checked && product.promo === true));
+                } else if(checked === false && filterCrudentials.promo === true){
+                    setProductsPager(allProducts.filter(product => product.promo === true));
+                }
+                if(checked === false && filterCrudentials.promo === false){
                     setProductsPager(allProducts);
                 }
             } else {
-                setProductsPager(products.filter(product => product.promo === checked));
-                if(checked === false){
+                if(checked === true && filterCrudentials.active === false){
+                    setProductsPager(allProducts.filter(product => product.promo === checked && product.active === false));
+                } else if(checked === true && filterCrudentials.active === true){
+                    setProductsPager(allProducts.filter(product => product.promo === checked && product.active === true));
+                } else if(checked === false && filterCrudentials.active === true){
+                    setProductsPager(allProducts.filter(product => product.promo === checked && product.active === true));
+                }
+                if(checked === false && filterCrudentials.active === false){
                     setProductsPager(allProducts);
                 }
             }
@@ -52,36 +60,38 @@ const SearchFilters = ({products, setProductsPager, isFetching}) => {
         }
     }
 
-    const handleClick = () =>{
+    const handleSubmit = event =>{
+        event.preventDefault();
         setProductsPager(products.filter(product => product.name.toLowerCase().includes(filterCrudentials.search)));
     }
 
-    console.log(filterCrudentials)
     return(
-        <SearchFiltersContainer>
+        <SearchFiltersContainer onSubmit={handleSubmit}>
             <FormInput 
                 name='search'
                 type='text'
                 handleChange={handleChange}
                 placeholder='Search'
-                img={<Magnifier onClick={handleClick}/>}
+                img={<Magnifier onClick={handleSubmit}/>}
             />
 
-            <FormInput 
-                name='active'
-                type='checkbox'
-                label='Active'
-                handleChange={handleChange}
-                value={filterCrudentials.active}
-            />
+            <OptionsContainer>
+                <FormInput 
+                    name='active'
+                    type='checkbox'
+                    label='Active'
+                    handleChange={handleChange}
+                    checked={filterCrudentials.active}
+                />
 
-            <FormInput 
-                name='promo'
-                type='checkbox'
-                label='Promo'
-                handleChange={handleChange}
-                value={filterCrudentials.promo}
-            />
+                <FormInput 
+                    name='promo'
+                    type='checkbox'
+                    label='Promo'
+                    handleChange={handleChange}
+                    checked={filterCrudentials.promo}
+                />
+            </OptionsContainer>
         </SearchFiltersContainer>
     )
 }

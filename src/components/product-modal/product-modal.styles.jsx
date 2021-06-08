@@ -1,4 +1,5 @@
 import styled from 'styled-components';
+import media from '../assets/media';
 
 export const ProductModalContainer = styled.div`
     position: fixed;
@@ -18,6 +19,7 @@ export const ModalContentContainer = styled.div`
     // height: 530px;
     position: relative;
     border-radius: 8px;
+    margin: 0 24px;
 `;
 
 export const CloseButtonContainer = styled.div`
@@ -28,6 +30,9 @@ export const CloseButtonContainer = styled.div`
 `;
 
 export const ModalProducPicture = styled.div`
+    img{
+        width:100%;
+    }
 `;
 
 export const ModalProductTitle = styled.div`

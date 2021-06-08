@@ -1,20 +1,26 @@
 import styled from 'styled-components';
+import media from '../assets/media';
 
 export const ProductCardContainer = styled.div`
-    width: 288px;
+    width: 100%;
     height: 400px;
     border-radius: 8px;
     background: #fff;
     display: flex;
     flex-direction: column;
     justify-content: space-between;
-    margin: 8px;
+    margin:8px 0;
     overflow: hidden;
 
     button{
         width: calc(100% - 32px);
         margin: 0 auto 24px;
     }
+
+    ${media.tablet`
+        width: 288px;
+        margin: 8px;
+    `};
 `;
 
 export const ImageContainer = styled.div`
