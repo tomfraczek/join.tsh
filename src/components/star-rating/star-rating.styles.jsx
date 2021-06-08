@@ -7,5 +7,6 @@ export const StarElement = styled.span`
 `;
 
 export const StarContainer = styled.span`
-    margin-bottom: 16px;
+    padding: 0 16px;
+    margin-top: auto;
 `;

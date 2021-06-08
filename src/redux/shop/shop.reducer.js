@@ -8,6 +8,23 @@ const INITIAL_STATE = {
 
 const shopReducer = (state = INITIAL_STATE, action) => {
   switch (action.type) {
+    case ShopActionTypes.FETCH_ALL_PRODUCTS_START:
+      return {
+        ...state,
+        isFetching: true
+      };
+    case ShopActionTypes.FETCH_ALL_PRODUCTS_SUCCESS:
+      return {
+        ...state,
+        isFetching: false,
+        products: action.payload
+      };
+    case ShopActionTypes.FETCH_ALL_PRODUCTS_FAILURE:
+      return {
+        ...state,
+        isFetching: false,
+        errorMessage: action.payload
+      };
     case ShopActionTypes.FETCH_PRODUCTS_START:
       return {
         ...state,
@@ -25,6 +42,12 @@ const shopReducer = (state = INITIAL_STATE, action) => {
         isFetching: false,
         errorMessage: action.payload
       };
+    case ShopActionTypes.SET_PRODUCTS_PAGER:
+      return{
+        ...state,
+        isFetching:false,
+        products: action.payload
+      }
     default:
       return state;
   }

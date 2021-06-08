@@ -21,6 +21,12 @@ export const FormInputContainer = styled.div`
 export const InputGroup = styled.div`
     display: flex;
     align-items: center;
+    position: relative;
+
+    svg{
+        position: absolute;
+        right: 19.5px;
+    }
 `;
 
 export const Input = styled.input`

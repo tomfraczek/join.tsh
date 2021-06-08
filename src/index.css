@@ -8,3 +8,7 @@
       font-family: 'Nunito';
       box-sizing: border-box;
   }
+
+  body{
+      margin: 0;
+  }

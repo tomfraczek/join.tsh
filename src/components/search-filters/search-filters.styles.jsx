@@ -7,5 +7,6 @@ const DisplayFlex = css`
 
 export const SearchFiltersContainer = styled.form`
     ${DisplayFlex}
-    flex: 2;
+    flex: 4;
+    flex-wrap: wrap;
 `;

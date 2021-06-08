@@ -7,11 +7,12 @@ import {
     Label
 } from './form-input.styles';
 
-const FormInput = ({label, type, handleChange, ...otherProps}) => (
+const FormInput = ({img, label, type, handleChange, ...otherProps}) => (
     <FormInputContainer>
         <InputGroup>
             <Input type={type} onChange={handleChange} {...otherProps}/>
             {label ? <Label>{label}</Label> : null}
+            {img ? img : null}
         </InputGroup>
     </FormInputContainer>
 )

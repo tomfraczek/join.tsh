@@ -9,6 +9,7 @@ export const HeaderContainer = styled.div`
     ${DisplayFlex}
     height: 144px;
     padding: 0 108px;
+    flex-wrap: wrap;
 `;
 
 export const LogoContainer = styled.div`

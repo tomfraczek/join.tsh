@@ -7,10 +7,13 @@ export const ProductCardContainer = styled.div`
     background: #fff;
     display: flex;
     flex-direction: column;
-    margin-bottom: 16px;
+    justify-content: space-between;
+    margin: 8px;
+    overflow: hidden;
 
     button{
-        padding 0 16px;
+        width: calc(100% - 32px);
+        margin: 0 auto 24px;
     }
 `;
 
@@ -30,7 +33,7 @@ export const CardTitleContainer = styled.div`
     padding: 0 16px;
 `;
 
-export const CardDescription = styled.p`
+export const CardDescription = styled.div`
     font-weight: 600;
     font-size: 14px;
     color: #9194A5;
