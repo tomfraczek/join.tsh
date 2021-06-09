@@ -6,7 +6,7 @@ import {
 } from './star-rating.styles';
 
 const StarRating = ({ value }) => {
-    const [rating, setRating] = useState(parseInt(value) || 0);
+    const [rating] = useState(parseInt(value) || 0);
     const [selection] = useState(0);
 
     const Star = ({ marked, starId }) => (

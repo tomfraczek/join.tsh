@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React from 'react';
 
 import CustomButton from '../custom-button/custom-button.component';
 import SearchFilters from '../search-filters/search-filters.component';

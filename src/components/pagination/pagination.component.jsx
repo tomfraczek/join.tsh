@@ -1,8 +1,5 @@
 import React from 'react';
 
-import { connect } from 'react-redux'
-import { createStructuredSelector } from 'reselect';
-
 import Pager from '@material-ui/lab/Pagination';
 
 import {

@@ -74,7 +74,6 @@ class Products extends React.Component {
 };
 
 const mapDispatchToProps = dispatch => ({
-  fetchAllProductsStartAsync: () => dispatch(fetchAllProductsStartAsync()),
   setProductsPager: products => dispatch(setProductsPager(products)),
   fetchAllProductsStartAsync: products => dispatch(fetchAllProductsStartAsync(products))
 });

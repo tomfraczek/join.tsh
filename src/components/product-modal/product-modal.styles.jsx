@@ -1,5 +1,4 @@
 import styled from 'styled-components';
-import media from '../assets/media';
 
 export const ProductModalContainer = styled.div`
     position: fixed;

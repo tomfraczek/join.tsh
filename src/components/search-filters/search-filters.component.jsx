@@ -29,7 +29,7 @@ const SearchFilters = ({products, setProductsPager, isFetching}) => {
 
     const handleChange = event =>{
         const { name, value, checked } = event.target;
-        if(event.target.type == 'checkbox'){
+        if(event.target.type === 'checkbox'){
             
             setFilterCrudentials({...filterCrudentials, [name]: checked });
             if(name === 'active'){
