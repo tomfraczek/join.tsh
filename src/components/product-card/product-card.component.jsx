@@ -1,4 +1,4 @@
-import React, {useEffect, useState} from 'react';
+import React, {useState} from 'react';
 
 import StarRating from '../star-rating/star-rating.component';
 import CustomButton from '../custom-button/custom-button.component';
